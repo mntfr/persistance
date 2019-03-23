@@ -41,7 +41,7 @@ def generateNumber(firstDigits, numberLenght):
 			int, generator
 	"""
 	for first in firstDigits:
-		restOfNumber = itertools.product([7, 8, 9], repeat=numberLenght - 2)
+		restOfNumber = itertools.combinations([7, 8, 9], numberLenght - 2)
 		for comb in restOfNumber:
 			lastDigits = ''.join(str(x) for x in comb)
 			yield int(first + lastDigits)
