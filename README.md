@@ -1,7 +1,7 @@
-# Persistance searcher
+# Persistence searcher
 ## Based on the numberphile video "What's special about 277777788888899?"
 
-This code will try every combination in order to see if it has persistance greater or equal to 11
+This code will try every combination in order to see if it has persistence greater or equal to 11
 This code will run forever unless is stopped
 The logic is based on the limits given in the video:
 1. Current search space is 230 digits
