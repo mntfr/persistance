@@ -1,6 +1,6 @@
 import itertools
 
-def parkerPersistanceFixed(num, steps=0):
+def parkerPersistenceFixed(num, steps=0):
 	"""
 		Fixed algorithm based on the video (sorry I couldn't help it with the name)
 		Parameters:
@@ -20,7 +20,7 @@ def parkerPersistanceFixed(num, steps=0):
 		result = 1
 		for j in digits:
 			result *= j
-		return parkerPersistanceFixed(result, steps)
+		return parkerPersistenceFixed(result, steps)
 
 #Al the combinations based on the restrictions of the video
 firstDigits = [1, 2, 3, 4]
@@ -41,17 +41,19 @@ def generateNumber(firstDigits, numberLenght):
 			int, generator
 	"""
 	for first in firstDigits:
-		restOfNumber = itertools.combinations([7, 8, 9], numberLenght - 2)
+		restOfNumber = itertools.product([7, 8, 9], repeat = numberLenght - 2)
 		for comb in restOfNumber:
 			lastDigits = ''.join(str(x) for x in comb)
 			yield int(first + lastDigits)
 
-#This loop will try every possible combination and analyze them
-#This will run forever
-#The starter search space is given in the video			
+
+# This loop will try every possible combination and analyze them
+# This will run forever
+# The starter search space is given in the video			
 searchSpace = 230
 while True:
-	for _ in generateNumber(firstDigits, searchSpace):
-		if parkerPersistanceFixed(_) >= 11:
-			print('{} takes: {} steps'.format(_, parkerPersistanceFixed(_)))
+	for kb in generateNumber(firstDigits, searchSpace):
+		if parkerPersistenceFixed(kb) >= 11:
+			print('{} takes: {} steps'.format(kb, parkerPersistenceFixed(kb)))
 	searchSpace += 1
+	print(searchSpace)
